@@ -72,7 +72,6 @@ C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\System.Web.WebPages.Ra
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\Newtonsoft.Json.xml
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\Antlr3.Runtime.pdb
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Chien\source\repos\MyProject_01\MyProject_01\obj\Debug\MyProject_01.csproj.AssemblyReference.cache
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\obj\Debug\MyProject_01.csproj.CoreCompileInputs.cache
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\obj\Debug\MyProject_01.dll
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\obj\Debug\MyProject_01.pdb
@@ -80,3 +79,8 @@ C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\EntityFramework.dll
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\EntityFramework.SqlServer.dll
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\EntityFramework.xml
 C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\EntityFramework.SqlServer.xml
+C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\PagedList.dll
+C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\PagedList.Mvc.dll
+C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\PagedList.xml
+C:\Users\Chien\source\repos\MyProject_01\MyProject_01\bin\PagedList.Mvc.xml
+C:\Users\Chien\source\repos\MyProject_01\MyProject_01\obj\Debug\MyProject_01.csproj.AssemblyReference.cache

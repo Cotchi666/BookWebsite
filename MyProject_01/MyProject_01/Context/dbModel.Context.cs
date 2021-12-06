@@ -13,10 +13,10 @@ namespace MyProject_01.Context
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WebBanSachEntities : DbContext
+    public partial class WebBanSachEntities4 : DbContext
     {
-        public WebBanSachEntities()
-            : base("name=WebBanSachEntities")
+        public WebBanSachEntities4()
+            : base("name=WebBanSachEntities4")
         {
         }
     
@@ -29,5 +29,7 @@ namespace MyProject_01.Context
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<OrderInfo> OrderInfoes { get; set; }
     }
 }

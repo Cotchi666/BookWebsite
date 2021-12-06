@@ -33,25 +33,36 @@
           <Property Name="CreatedOnUtc" Type="datetime" />
           <Property Name="UpdateOnUtc" Type="datetime" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderInfo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="Avatar" Type="nchar" MaxLength="100" />
-          <Property Name="CategoryId" Type="int" />
-          <Property Name="ShortDes" Type="nvarchar" MaxLength="100" />
-          <Property Name="FullDescription" Type="nvarchar" MaxLength="500" />
-          <Property Name="Price" Type="float" />
-          <Property Name="PriceDiscount" Type="float" />
-          <Property Name="TypeId" Type="int" />
-          <Property Name="Slug" Type="varchar" MaxLength="50" />
-          <Property Name="BrandId" Type="int" />
-          <Property Name="Deleted" Type="bit" />
-          <Property Name="ShowOnHomePage" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Status" Type="int" />
           <Property Name="CreatedOnUtc" Type="datetime" />
-          <Property Name="UpdateOnUtc" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="ShortDes" Type="nvarchar" MaxLength="500" />
+          <Property Name="FullDes" Type="nvarchar" MaxLength="500" />
+          <Property Name="Price" Type="float" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -67,6 +78,8 @@
         <EntityContainer Name="WebBanSachModelStoreContainer">
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -107,20 +120,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CategoryId" Type="Int32" />
-          <Property Name="ShortDes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FullDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FullDes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Double" />
-          <Property Name="PriceDiscount" Type="Double" />
-          <Property Name="TypeId" Type="Int32" />
-          <Property Name="Slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BrandId" Type="Int32" />
-          <Property Name="Deleted" Type="Boolean" />
-          <Property Name="ShowOnHomePage" Type="Int32" />
-          <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
-          <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -133,18 +138,39 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsAdmin" Type="Boolean" />
         </EntityType>
-        <EntityContainer Name="WebBanSachEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WebBanSachEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="OrderDetails" EntityType="WebBanSachModel.OrderDetail" />
+          <EntitySet Name="OrderInfoes" EntityType="WebBanSachModel.OrderInfo" />
         </EntityContainer>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OrderInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WebBanSachModelStoreContainer" CdmEntityContainer="WebBanSachEntities">
+        <EntityContainerMapping StorageEntityContainer="WebBanSachModelStoreContainer" CdmEntityContainer="WebBanSachEntities4">
           <EntitySetMapping Name="Brands">
             <EntityTypeMapping TypeName="WebBanSachModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
@@ -183,16 +209,8 @@
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ShortDes" ColumnName="ShortDes" />
-                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="FullDes" ColumnName="FullDes" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="PriceDiscount" ColumnName="PriceDiscount" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-                <ScalarProperty Name="Slug" ColumnName="Slug" />
-                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
-                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-                <ScalarProperty Name="UpdateOnUtc" ColumnName="UpdateOnUtc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -205,6 +223,27 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="WebBanSachModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderInfoes">
+            <EntityTypeMapping TypeName="WebBanSachModel.OrderInfo">
+              <MappingFragment StoreEntitySet="OrderInfo">
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

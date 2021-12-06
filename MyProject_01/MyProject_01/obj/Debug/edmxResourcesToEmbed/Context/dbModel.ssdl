@@ -28,25 +28,36 @@
     <Property Name="CreatedOnUtc" Type="datetime" />
     <Property Name="UpdateOnUtc" Type="datetime" />
   </EntityType>
-  <EntityType Name="Product">
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" />
+    <Property Name="ProductId" Type="int" />
+    <Property Name="Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
-    <Property Name="Avatar" Type="nchar" MaxLength="100" />
-    <Property Name="CategoryId" Type="int" />
-    <Property Name="ShortDes" Type="nvarchar" MaxLength="100" />
-    <Property Name="FullDescription" Type="nvarchar" MaxLength="500" />
-    <Property Name="Price" Type="float" />
-    <Property Name="PriceDiscount" Type="float" />
-    <Property Name="TypeId" Type="int" />
-    <Property Name="Slug" Type="varchar" MaxLength="50" />
-    <Property Name="BrandId" Type="int" />
-    <Property Name="Deleted" Type="bit" />
-    <Property Name="ShowOnHomePage" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Status" Type="int" />
     <Property Name="CreatedOnUtc" Type="datetime" />
-    <Property Name="UpdateOnUtc" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="ShortDes" Type="nvarchar" MaxLength="500" />
+    <Property Name="FullDes" Type="nvarchar" MaxLength="500" />
+    <Property Name="Price" Type="float" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -62,6 +73,8 @@
   <EntityContainer Name="WebBanSachModelStoreContainer">
     <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

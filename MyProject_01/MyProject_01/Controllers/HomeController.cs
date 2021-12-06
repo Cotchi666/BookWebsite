@@ -8,11 +8,12 @@ using System.Web.Mvc;
 using MyProject_01.Context;
 using MyProject_01.Models;
 
+
 namespace MyProject_01.Controllers
 {
     public class HomeController : Controller
     {
-        WebBanSachEntities db = new WebBanSachEntities();
+        WebBanSachEntities4 db = new WebBanSachEntities4();
 
         public ActionResult Index()
         {
@@ -27,6 +28,7 @@ namespace MyProject_01.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User _user)
@@ -47,12 +49,8 @@ namespace MyProject_01.Controllers
                     ViewBag.error = "Email already exists";
                     return View();
                 }
-
-
             }
-            return View();
-
-
+            return View(_user);
         }
 
         //create a string MD5
@@ -75,14 +73,12 @@ namespace MyProject_01.Controllers
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string email, string password)
         {
             if (ModelState.IsValid)
             {
-
                 var f_password = GetMD5(password);
                 var data = db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
@@ -101,15 +97,11 @@ namespace MyProject_01.Controllers
             }
             return View();
         }
-
-
         //Logout
         public ActionResult Logout()
         {
             Session.Clear();//remove session
             return RedirectToAction("Login");
         }
-
     }
-  
 }

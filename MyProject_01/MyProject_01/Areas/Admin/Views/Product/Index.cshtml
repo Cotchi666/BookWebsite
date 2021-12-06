@@ -1,0 +1,103 @@
+﻿
+@using PagedList;
+
+@using PagedList.Mvc;
+
+@model IPagedList<MyProject_01.Context.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>
+        Tìm tên sản phẩm:@Html.TextBox("SearchString")
+        <input type="submit" name="submit" value="Tìm kiếm" />
+    </p>
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table"border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Avatar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ShortDes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().FullDes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3">
+                Records not found
+            </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Avatar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullDes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    }
+
+
+</table>
+Trang @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new
+ {
+     pageNumber,
+     //option = Request.QueryString["option"],
+     search = Request.QueryString["search"]
+ }))

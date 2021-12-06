@@ -3,8 +3,37 @@
     ViewBag.Title = "Detail";
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = @Model.Id;
+            // lấy số lượng đặt hàng
+            model.Quantity = $("#ipQuantity").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Thêm giỏ hàng thành công!")
+                    $('#CartCount').text(@Session["count"] + 1);
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
 
+</script>
 <section class="py-3 bg-light">
     <div class="container">
         <ol class="breadcrumb">
@@ -65,7 +94,7 @@
                     </div> <!-- price-detail-wrap .// -->
 
                     <p>
-                       @Model.ShortDes
+                        @Model.ShortDes
                     </p>
 
 
@@ -89,18 +118,16 @@
                     <div class="form-row  mt-4">
                         <div class="form-group col-md flex-grow-0">
                             <div class="input-group mb-3 input-spinner">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-light" type="button" id="button-plus"> + </button>
-                                </div>
-                                <input type="text" class="form-control" value="1">
-                                <div class="input-group-append">
-                                    <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
-                                </div>
+
+                                <input type="text" id=" bQuantity" class="form-control" value="1">
+
                             </div>
                         </div> <!-- col.// -->
                         <div class="form-group col-md">
-                            <a href="#" class="btn  btn-primary">
-                                <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
+                            <!--sử dụng ajax thì bỏ Url.Action("Add","Cart", new {Id = Model.Id})" -->
+                            <a href="#" @*"@Url.Action("Add","Cart", new {Id = Model.Id})"*@ id="addtocart" class="btn btn-primaty">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="text" hidden>Thêm vào giỏ hàng</span>
                             </a>
                             <a href="#" class="btn btn-light">
                                 <i class="fas fa-envelope"></i> <span class="text">Contact supplier</span>
@@ -124,7 +151,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h5 class="title-description">Description</h5>
-             @Model.FullDescription
+                @Model.FullDes
             </div> <!-- col.// -->
 
             <aside class="col-md-4">

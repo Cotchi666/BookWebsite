@@ -8,7 +8,7 @@ namespace MyProject_01.Controllers
 {
     public class CategoryController : Controller
     {
-        WebBanSachEntities db = new WebBanSachEntities();
+        WebBanSachEntities4 db = new WebBanSachEntities4();
         // GET: Category
         public ActionResult Index()
         {

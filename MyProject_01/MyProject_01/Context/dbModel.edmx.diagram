@@ -4,11 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8170736b40a247fcb46bc61c5d1fe224" Name="Diagram1">
+      <Diagram DiagramId="2885a9cd019e49f897d11650184f35e9" Name="Diagram1">
         <EntityTypeShape EntityType="WebBanSachModel.Brand" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebBanSachModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebBanSachModel.Product" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebBanSachModel.User" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSachModel.OrderDetail" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="WebBanSachModel.OrderInfo" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
