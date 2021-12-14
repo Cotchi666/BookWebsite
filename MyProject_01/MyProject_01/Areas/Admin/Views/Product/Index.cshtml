@@ -1,6 +1,5 @@
 ﻿
 @using PagedList;
-
 @using PagedList.Mvc;
 
 @model IPagedList<MyProject_01.Context.Product>
@@ -9,15 +8,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
 
-<h2>Index</h2>
-
-
-
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Thêm mới sản phẩm</h2>
 
 @using (Html.BeginForm("Index", "Product", FormMethod.Get))
 {
@@ -29,7 +22,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table"border="1">
+<table class="table" border="1">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.First().Name)
@@ -78,7 +71,9 @@
                     @Html.DisplayFor(modelItem => item.ShortDes)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FullDes)
+                    
+                    @Html.DisplayFor(modelItem => item.FullDes))
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
@@ -96,8 +91,8 @@
 
 </table>
 Trang @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new
- {
-     pageNumber,
-     //option = Request.QueryString["option"],
-     search = Request.QueryString["search"]
- }))
+{
+pageNumber,
+//option = Request.QueryString["option"],
+search = Request.QueryString["search"]
+}))

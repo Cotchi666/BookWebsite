@@ -21,7 +21,7 @@ namespace MyProject_01.Controllers
             else
             {
                 //lấy thông tin từ biến session
-                var lstCart = (List<Cart>)Session["cart"];
+                var lstCart = (List<CartModel>)Session["cart"];
                 // gán dữ liệu cho Order
                 OrderInfo OI = new OrderInfo();
                 OI.Name = "DonHang-" + DateTime.Now.ToString("yyyyMMddHHmmss");

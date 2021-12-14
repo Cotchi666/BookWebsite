@@ -135,7 +135,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Context\Brand.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -178,7 +177,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
@@ -2075,6 +2074,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\css\test.css" />
     <Content Include="Content\css\ui.css" />
     <Content Include="Content\fonts\fontawesome\css\all.css" />
     <Content Include="Content\fonts\fontawesome\css\all.min.css" />
@@ -2111,9 +2111,12 @@
     <Content Include="Content\images\banners\banner7.jpg" />
     <Content Include="Content\images\banners\banner8.jpg" />
     <Content Include="Content\images\banners\banner9.jpg" />
-    <Content Include="Content\images\banners\slide1.jpg" />
-    <Content Include="Content\images\banners\slide2.jpg" />
-    <Content Include="Content\images\banners\slide3.jpg" />
+    <Content Include="Content\images\banners\Doreamon.png" />
+    <Content Include="Content\images\banners\Dự án mới %281%29.png" />
+    <Content Include="Content\images\banners\One-Piece-manga-2.png" />
+    <Content Include="Content\images\banners\onepiece1.jpg" />
+    <Content Include="Content\images\banners\Sale_off.jpg" />
+    <Content Include="Content\images\banners\_book_sale.jpg" />
     <Content Include="Content\images\items\Cate_sach_thieu_nhi.png" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\icons\flags\AU%402x.png" />
@@ -2139,23 +2142,6 @@
     <Content Include="Content\images\icons\pay-mastercard.png" />
     <Content Include="Content\images\icons\pay-visa-el.png" />
     <Content Include="Content\images\icons\pay-visa.png" />
-    <Content Include="Content\images\items\1.jpg" />
-    <Content Include="Content\images\items\10.jpg" />
-    <Content Include="Content\images\items\11.jpg" />
-    <Content Include="Content\images\items\12.jpg" />
-    <Content Include="Content\images\items\13.jpg" />
-    <Content Include="Content\images\items\14.jpg" />
-    <Content Include="Content\images\items\15-1.jpg" />
-    <Content Include="Content\images\items\15-2.jpg" />
-    <Content Include="Content\images\items\15.jpg" />
-    <Content Include="Content\images\items\2.jpg" />
-    <Content Include="Content\images\items\3.jpg" />
-    <Content Include="Content\images\items\4.jpg" />
-    <Content Include="Content\images\items\5.jpg" />
-    <Content Include="Content\images\items\6.jpg" />
-    <Content Include="Content\images\items\7.jpg" />
-    <Content Include="Content\images\items\8.jpg" />
-    <Content Include="Content\images\items\9.jpg" />
     <Content Include="Content\images\items\book_10buoc.png" />
     <Content Include="Content\images\items\book_12sao.png" />
     <Content Include="Content\images\items\book_chiaTay.png" />
@@ -2188,6 +2174,7 @@
     <Content Include="Content\images\posts\2.jpg" />
     <Content Include="Content\images\posts\3.jpg" />
     <Content Include="Content\images\posts\4.jpg" />
+    <Content Include="Content\images\posts\Dự án mới.png" />
     <Content Include="Content\js\bootstrap.bundle.min.js" />
     <Content Include="Content\js\jquery-2.0.0.min.js" />
     <Content Include="Content\js\script.js" />
@@ -2316,7 +2303,6 @@
     <Content Include="Content\Admin\plugins\summernote\summernote.js.map" />
     <Content Include="Content\Admin\plugins\summernote\summernote.min.js.map" />
     <Content Include="Content\Admin\plugins\toastr\toastr.js.map" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <EntityDeploy Include="Context\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -2343,6 +2329,9 @@
     <Content Include="Scripts\ckeditor\SECURITY.md" />
     <Content Include="Scripts\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Content\images\items\ - Copy.DS_Store" />
+    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />

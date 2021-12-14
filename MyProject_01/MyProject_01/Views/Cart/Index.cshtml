@@ -1,9 +1,9 @@
-﻿@model IEnumerable<MyProject_01.Models.Cart>
+﻿@model IEnumerable<MyProject_01.Models.CartModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<!-- ========================= Ajax load ========================= -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(function () {
@@ -29,14 +29,14 @@
         });
     });
 </script>
+
+
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
     <div class="container">
-
         <div class="row">
             <main class="col-md-9">
                 <div class="card">
-
                     <table class="table table-borderless table-shopping-cart">
                         <thead class="text-muted">
                             <tr class="small text-uppercase">
@@ -50,6 +50,7 @@
                         {
                             foreach (var item in Model)
                             {
+                                double total = item.Product.Price.Value * item.Quantity;
                                 <tr id="product-@item.Product.Id">
                                     <td>
                                         <figure class="itemside">
@@ -60,7 +61,14 @@
                                         </figure>
                                     </td>
                                     <td>
-                                        <input type="text" value="@item.Quantity" />
+                                        @*@using (Html.BeginForm("UpdateToCartByQuantity", "Cart"))
+                                        {
+                                            <input type="hidden" value="@item.Product.Id" name="productID" />*@
+                                            <input type="number" value="@item.Quantity" name="quantity" />
+                                            @*<input type="submit" value="Update quantity" />
+                                        }*@
+
+
                                     </td>
                                     <td>
                                         <div class="price-wrap">
@@ -69,20 +77,26 @@
                                     </td>
                                     <td class="text-right">
                                         <input type="hidden" value="@item.Product.Id" id="productid" />
-                                        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
-
+                                        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> 
+                                        <i class="fa fa-heart">
+                                            </i>
+                                        </a>
                                         <a href="" class="btn btn-light" id="removecart"> Remove</a>
                                     </td>
-                                </tr>
+                                    <td class="text-right">
+                                        <dl class="dlist-align">
+                                            <dt>Total:</dt>
+                                            <dd class="text-right  h5"><strong>@total</strong></dd>
+                                        </dl>
+                                    </td>
 
+                                </tr>
                             }
                         }
                         else
                         {
-                            <p>Không có sản phẩm trong giỏ hàng</p>
+                            <p style="text-align:center">Không có sản phẩm trong giỏ hàng</p>
                         }
-
-
                     </table>
 
                     <div class="card-body border-top">
@@ -96,49 +110,16 @@
                 </div>
 
             </main> <!-- col.// -->
-            <aside class="col-md-3">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label>Have coupon?</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="" placeholder="Coupon code">
-                                    <span class="input-group-append">
-                                        <button class="btn btn-primary">Apply</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                    </div> <!-- card-body.// -->
-                </div>  <!-- card .// -->
-                <div class="card">
-                    <div class="card-body">
-                        <dl class="dlist-align">
-                            <dt>Total price:</dt>
-                            <dd class="text-right">USD 568</dd>
-                        </dl>
-                        <dl class="dlist-align">
-                            <dt>Discount:</dt>
-                            <dd class="text-right">USD 658</dd>
-                        </dl>
-                        <dl class="dlist-align">
-                            <dt>Total:</dt>
-                            <dd class="text-right  h5"><strong>$1,650</strong></dd>
-                        </dl>
-                        <hr>
-                        <p class="text-center mb-3">
-                            <img src="~/Contentimages/misc/payments.png" height="26">
-                        </p>
 
-                    </div> <!-- card-body.// -->
-                </div>  <!-- card .// -->
-            </aside> <!-- col.// -->
         </div>
 
     </div> <!-- container .//  -->
 </section>
+
+
 <!-- ========================= SECTION CONTENT END// ========================= -->
+
+
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name border-top padding-y">
     <div class="container">

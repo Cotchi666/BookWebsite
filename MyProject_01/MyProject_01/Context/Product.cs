@@ -11,7 +11,8 @@ namespace MyProject_01.Context
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Product
     {
         public int Id { get; set; }
@@ -21,5 +22,7 @@ namespace MyProject_01.Context
         public string ShortDes { get; set; }
         public string FullDes { get; set; }
         public Nullable<double> Price { get; set; }
+        [NotMapped]
+        public System.Web.HttpPostedFileBase ImageUpLoad1 { get; set; }
     }
 }

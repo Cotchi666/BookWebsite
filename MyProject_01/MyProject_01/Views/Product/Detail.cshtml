@@ -12,7 +12,7 @@
             //lấy id sản phẩm
             model.Id = @Model.Id;
             // lấy số lượng đặt hàng
-            model.Quantity = $("#ipQuantity").val();
+            model.Quantity = $("#bQuantity").val();
             debugger;
             $.ajax({
                 type: "POST",
@@ -115,30 +115,28 @@
                         <dd class="col-sm-9">in Stock</dd>
                     </dl>
 
-                    <div class="form-row  mt-4">
-                        <div class="form-group col-md flex-grow-0">
-                            <div class="input-group mb-3 input-spinner">
-
-                                <input type="text" id=" bQuantity" class="form-control" value="1">
-
-                            </div>
-                        </div> <!-- col.// -->
-                        <div class="form-group col-md">
-                            <!--sử dụng ajax thì bỏ Url.Action("Add","Cart", new {Id = Model.Id})" -->
-                            <a href="#" @*"@Url.Action("Add","Cart", new {Id = Model.Id})"*@ id="addtocart" class="btn btn-primaty">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span class="text" hidden>Thêm vào giỏ hàng</span>
-                            </a>
-                            <a href="#" class="btn btn-light">
-                                <i class="fas fa-envelope"></i> <span class="text">Contact supplier</span>
-                            </a>
-                        </div> <!-- col.// -->
-                    </div> <!-- row.// -->
-
-                </article> <!-- product-info-aside .// -->
-            </main> <!-- col.// -->
+        <div class="form-row  mt-4">
+            <div class="form-group col-md flex-grow-0">
+                <div class="input-group mb-3 input-spinner">
+                    @*id không được chừa khoảng trắng nếu dùng ajax*@
+                    <input type="text" id="bQuantity" class="form-control" value="1">
+                </div>
+            </div> <!-- col.// -->
+            <div class="form-group col-md">
+                @*bỏ đường dẫn nếu dùng ajax*@
+                <!--sử dụng ajax thì bỏ Url.Action("Add","Cart", new {Id = Model.Id})" -->
+                <a href="#" id="addtocart" class="btn  btn-primary">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="text" h>Thêm vào giỏ hàng</span>
+                </a>
+            </div> <!-- col.// -->
         </div> <!-- row.// -->
-        <!-- ================ ITEM DETAIL END .// ================= -->
+        </article> <!-- product-info-aside .// -->
+        </main> <!-- col.// -->
+    </div> <!-- row.// -->
+    <!-- ================ ITEM DETAIL END .// ================= -->
+
+
 
 
     </div> <!-- container .//  -->

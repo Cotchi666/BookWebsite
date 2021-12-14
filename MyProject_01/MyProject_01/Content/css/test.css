@@ -1,0 +1,88 @@
+﻿.tygh-top-panel {
+    padding: 25px 0 5px 0;
+    background: #fff;
+    z-index: 999;
+}
+
+.clearfix {
+    display: block;
+    clear: both;
+}
+
+.tygh-top-panel {
+    position: relative;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+*:not(i) {
+    font-family: "Montserrat-Light",sans-serif !important;
+}
+
+body, div, p, .tabs ul li.cm-active a, .tabs ul li.cm-active a:visited, .tabs ul li.cm-active a:hover, .tabs ul li.cm-active a:active, .checkout-sidebox-title, .demo-site-panel select {
+    color: #66645c;
+}
+
+body, div, span, li, td, input[type="text"], input[type="password"], textarea, select, .scroll-y, .ui-widget select, .ui-widget textarea, .ui-widget, .ui-dialog .ui-dialog-title, a, a:visited, a:active, .cm-popup-title:hover > a, .cm-popup-title.unlogged a, .cm-popup-title.logged a, .minicart-title, ul.dropdown-multicolumns li a {
+    font: 13px "Roboto",Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+a, b, body, div, form, h2, h3, h4, html, i, iframe, img, label, li, object, p, span, strong, table, tbody, td, tr, ul {
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a, b, blockquote, body, div, em, fieldset, form, h1, h3, hr, html, i, img, label, li, p, span, strong, table, tbody, td, tr, ul {
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+user agent stylesheet
+div {
+    display: block;
+}
+
+body {
+    font-family: "Montserrat-Light",sans-serif !important;
+    font-size: 12px;
+    background: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
